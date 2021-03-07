@@ -4,6 +4,8 @@ This is because I thought that when we search by one argument we can get results
 Else we don't know which time series is for which key, also there would be confusion what Quantity to choose for the object if we end up having two.
 This won't happen with this data set when joining all 3 collections but given the structure I thought would be best.
 
+Tried to use the group by in the IQueryable, though I had some exceptions regarding the conversion to linq. Looks like that conversion doesn't work yet properly in Mongo
+
 Also the epoch time in the given     
 quantity: gas,
     country: UK,
