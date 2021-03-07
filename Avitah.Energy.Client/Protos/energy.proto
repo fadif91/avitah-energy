@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+import "google/protobuf/wrappers.proto";
+
+option csharp_namespace = "Avitah.Energy.Client";
+
+package energy;
+
+service Energy {
+	rpc GetTimeSeries (.energy.TimeSeriesRequest) returns (.energy.TimeSeriesResponse);
+}
+
+message TimeSeriesRequest{
+	string country = 1;
+	string quantity = 2;
+	string type = 3;
+	string category = 4;
+	.google.protobuf.Int64Value from_date = 5;
+	.google.protobuf.Int64Value to_date = 6;
+}
+
+message TimeSeriesResponse{
+	repeated .energy.TimeSeriesGrouping timeSeriesGrouping = 1;
+}
+
+message TimeSeriesGrouping{
+	string country = 1;
+	string quantity = 2;
+	string type = 3;
+	string category = 4;
+	string unit = 5;
+	repeated .energy.TimeSeries timeSeries = 6;
+}
+
+message TimeSeries{
+	sint64 dateTime = 1;
+	.google.protobuf.DoubleValue value = 2;
+}
